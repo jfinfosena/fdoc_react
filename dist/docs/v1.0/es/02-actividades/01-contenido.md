@@ -7,7 +7,7 @@ date: 2025-10-22
 Objetivo: Crear un proyecto Next.js con JavaScript y definir componentes que cubran todas las formas de props explicadas en el material de clase 3.
 
 ## Pasos simples
-1) Crear proyecto Next.js con TypeScript
+1) Crear proyecto Next.js con JavaScript
 
 2) Estructura mínima (solo archivos y comentarios)
 - Crea `app/page.jsx` con comentarios guía (sin importar componentes ni escribir JSX final).
@@ -19,7 +19,7 @@ Objetivo: Crear un proyecto Next.js con JavaScript y definir componentes que cub
   - `ContenedorRenderProp.jsx`
   - `CajaChildren.jsx`
   - `SaludoConDefaultProps.jsx`
-  - `PerfilConPropTypes.jsx`
+
 - En cada archivo, escribe al inicio un bloque de comentarios con:
   - Propósito (1–2 líneas).
   - Props esperadas y descripción.
