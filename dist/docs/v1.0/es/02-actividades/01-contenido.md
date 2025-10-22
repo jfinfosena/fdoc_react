@@ -1,72 +1,66 @@
 ---
-title: "Actividad 1: Proyecto Next.js + TypeScript y componentes con props"
+title: "Actividad 1: Proyecto Next.js (JavaScript) y componentes con props"
 position: 1
 date: 2025-10-22
 ---
 
-Objetivo: Crear un proyecto Next.js con TypeScript y definir componentes que cubran todas las formas de props explicadas en el material de clase 3.
+Objetivo: Crear un proyecto Next.js con JavaScript y definir componentes que cubran todas las formas de props explicadas en el material de clase 3.
 
 ## Pasos simples
 1) Crear proyecto Next.js con TypeScript
 
 2) Estructura mínima (solo archivos y comentarios)
-- Crea `app/page.tsx` con comentarios guía (sin importar componentes ni escribir JSX final).
+- Crea `app/page.jsx` con comentarios guía (sin importar componentes ni escribir JSX final).
 - Crea `app/components/` con estos 8 archivos:
-  - `SaludoBasico.tsx`
-  - `SaludoDesestructurado.tsx`
-  - `PerfilConObjeto.tsx`
-  - `BotonConCallback.tsx`
-  - `ContenedorRenderProp.tsx`
-  - `CajaChildren.tsx`
-  - `SaludoConDefaultProps.tsx`
-  - `PerfilConPropTypes.tsx`
+  - `SaludoBasico.jsx`
+  - `SaludoDesestructurado.jsx`
+  - `PerfilConObjeto.jsx`
+  - `BotonConCallback.jsx`
+  - `ContenedorRenderProp.jsx`
+  - `CajaChildren.jsx`
+  - `SaludoConDefaultProps.jsx`
+  - `PerfilConPropTypes.jsx`
 - En cada archivo, escribe al inicio un bloque de comentarios con:
   - Propósito (1–2 líneas).
-  - Props esperadas y tipos.
+  - Props esperadas y descripción.
 
 3) Especificaciones de componentes (sin resolver)
-- `SaludoBasico.tsx`
-  - Props: `nombre: string` (requerida), `entusiasta?: boolean` (opcional).
-  - Debe mostrar "Hola, {nombre}" y, si `entusiasta` es true, un énfasis adicional.
-  - Casos: con y sin `entusiasta`.
+- `SaludoBasico.jsx`
+  - Props: nombre (string, requerida), entusiasta (boolean, opcional).
+  - Debe mostrar "Hola, {nombre}" y, si entusiasta es true, un énfasis adicional.
+  - Casos: con y sin entusiasta.
 
-- `SaludoDesestructurado.tsx`
-  - Props: `nombre: string`, `edad: number`.
+- `SaludoDesestructurado.jsx`
+  - Props: nombre (string), edad (number).
   - Debe usar desestructuración en la firma del componente.
-  - Muestra `nombre` y `edad` claramente.
+  - Muestra nombre y edad claramente.
 
-- `PerfilConObjeto.tsx`
-  - Prop: `usuario: { nombre: string; hobbies: string[] }`.
+- `PerfilConObjeto.jsx`
+  - Prop: usuario (objeto con nombre: string; hobbies: string[]).
   - Debe listar hobbies separados por comas.
-  - Casos: `hobbies` vacío (muestra "Sin hobbies") y con varios elementos.
+  - Casos: hobbies vacío (muestra "Sin hobbies") y con varios elementos.
 
-- `BotonConCallback.tsx`
-  - Props: `onClick: () => void`, `texto: string`.
-  - Debe invocar `onClick` cuando se hace clic.
+- `BotonConCallback.jsx`
+  - Props: onClick (función), texto (string).
+  - Debe invocar onClick cuando se hace clic.
   - Describe el comportamiento esperado del botón (sin función real).
 
-- `ContenedorRenderProp.tsx`
-  - Props: `contenido: React.ReactNode` o `render: () => React.ReactNode`.
+- `ContenedorRenderProp.jsx`
+  - Props: contenido (elemento React) o render (función que retorna elemento React).
   - Debe renderizar el contenido pasado.
   - Indica qué patrón eliges y por qué (breve justificación).
 
-- `CajaChildren.tsx`
-  - Prop especial: `children: React.ReactNode`.
-  - Debe envolver y mostrar `children` dentro de un contenedor simple.
+- `CajaChildren.jsx`
+  - Prop especial: children (contenido React).
+  - Debe envolver y mostrar children dentro de un contenedor simple.
   - Casos: título + párrafo; lista con varios ítems.
 
-- `SaludoConDefaultProps.tsx`
-  - Props: `nombre?: string`.
-  - Debe tener valor por defecto para `nombre` (en TS: valor por defecto en parámetro o fallback interno; evita `defaultProps`).
-  - Caso: cuando no se pasa `nombre`, muestra "Invitado".
+- `SaludoConDefaultProps.jsx`
+  - Props: nombre (string, opcional).
+  - Debe tener valor por defecto para nombre (en JS: valor por defecto en parámetro o fallback interno; evita defaultProps).
+  - Caso: cuando no se pasa nombre, muestra "Invitado".
 
-- `PerfilConPropTypes.tsx`
-  - Props: `nombre: string`, `edad: number`, `activo?: boolean`.
-  - Documenta uso de `prop-types` para validación en tiempo de ejecución.
-  - Instalación (solo indicar): `npm install prop-types`.
-  - Explica brevemente por qué puede complementar a TypeScript.
-
-4) Página de demostración (`app/page.tsx`)
+4) Página de demostración (`app/page.jsx`)
 - Escribe secciones de comentarios con ejemplos de uso previstos para cada componente.
 - Incluye una lista de "Pruebas manuales" (qué observar en pantalla si se implementara).
 - No importes componentes ni escribas JSX: solo guías claras.
