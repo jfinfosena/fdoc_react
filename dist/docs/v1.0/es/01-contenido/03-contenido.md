@@ -305,3 +305,232 @@ Inactivo
 
 ---
 
+
+## Props en React con TypeScript
+
+## Introducción
+
+En React, los **props** son el mecanismo principal para pasar datos de un componente padre a un componente hijo. Con TypeScript, se puede añadir tipado estático para mejorar la seguridad y mantenibilidad del código, asegurando que los props tengan el tipo correcto y evitando errores en tiempo de ejecución. 
+
+TypeScript permite definir interfaces o tipos para los props, proporcionando autocompletado, validación de tipos y mejor documentación. A continuación, se presentan ejemplos prácticos en formato MkDocs Material, en español.
+
+---
+
+## Configuración Básica
+
+Para usar React con TypeScript, asegúrate de tener un proyecto configurado con las siguientes dependencias:
+
+```bash
+npm install typescript @types/react @types/react-dom
+```
+
+Los archivos de componentes deben tener la extensión `.tsx`.
+
+---
+
+## Definición de Props con TypeScript
+
+Sin usar `React.FC`, definimos los props mediante una **interfaz** y tipamos explícitamente los parámetros de la función del componente.
+
+### Ejemplo 1: Componente con Props Básicos
+
+Un componente que muestra el nombre y la edad de una persona.
+
+```tsx
+// Definimos la interfaz para los props
+interface PersonaProps {
+  nombre: string;
+  edad: number;
+}
+
+// Componente funcional con props tipadas
+function Persona({ nombre, edad }: PersonaProps) {
+  return (
+    <div>
+      <h2>{nombre}</h2>
+      <p>Edad: {edad}</p>
+    </div>
+  );
+}
+
+// Uso del componente
+function App() {
+  return <Persona nombre="Ana" edad={25} />;
+}
+
+export default App;
+```
+
+**Explicación**:
+- La interfaz `PersonaProps` define las propiedades `nombre` (string) y `edad` (number).
+- En lugar de `React.FC`, tipamos los props directamente en la desestructuración de la función (`{ nombre, edad }: PersonaProps`).
+- TypeScript asegura que al usar el componente `Persona`, se pasen las props con los tipos correctos.
+
+---
+
+## Props Opcionales
+
+Las props opcionales se marcan con `?` en la interfaz.
+
+### Ejemplo 2: Props Opcionales
+
+```tsx
+interface SaludoProps {
+  mensaje: string;
+  nombre?: string; // Prop opcional
+}
+
+function Saludo({ mensaje, nombre }: SaludoProps) {
+  return (
+    <div>
+      <h1>{mensaje}</h1>
+      {nombre && <p>Dirigido a: {nombre}</p>}
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <>
+      <Saludo mensaje="¡Hola, mundo!" />
+      <Saludo mensaje="¡Bienvenido!" nombre="Carlos" />
+    </>
+  );
+}
+
+export default App;
+```
+
+**Explicación**:
+- La prop `nombre` es opcional (`nombre?: string`).
+- Usamos una condición (`nombre && ...`) para manejar el caso en que `nombre` no se pase.
+
+---
+
+## Props con Valores por Defecto
+
+Los valores por defecto se asignan mediante desestructuración en los parámetros de la función.
+
+### Ejemplo 3: Props con Valores por Defecto
+
+```tsx
+interface BotonProps {
+  texto: string;
+  color?: string;
+}
+
+function Boton({ texto, color = "azul" }: BotonProps) {
+  return <button style={{ backgroundColor: color }}>{texto}</button>;
+}
+
+function App() {
+  return (
+    <>
+      <Boton texto="Clic aquí" /> {/* Usa color por defecto: azul */}
+      <Boton texto="Enviar" color="verde" />
+    </>
+  );
+}
+
+export default App;
+```
+
+**Explicación**:
+- La prop `color` es opcional y tiene un valor por defecto de `"azul"` en la desestructuración.
+- Esto elimina la necesidad de verificar si `color` existe en el componente.
+
+---
+
+## Props con Tipos Complejos
+
+TypeScript permite definir props con estructuras más complejas, como objetos, arrays o funciones.
+
+### Ejemplo 4: Props con Objetos y Funciones
+
+```tsx
+interface Producto {
+  id: number;
+  nombre: string;
+  precio: number;
+}
+
+interface CarritoProps {
+  productos: Producto[];
+  onEliminar: (id: number) => void;
+}
+
+function Carrito({ productos, onEliminar }: CarritoProps) {
+  return (
+    <div>
+      <h2>Carrito de Compras</h2>
+      <ul>
+        {productos.map((producto) => (
+          <li key={producto.id}>
+            {producto.nombre} - ${producto.precio}
+            <button onClick={() => onEliminar(producto.id)}>Eliminar</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function App() {
+  const productosEjemplo: Producto[] = [
+    { id: 1, nombre: "Laptop", precio: 1000 },
+    { id: 2, nombre: "Teléfono", precio: 500 },
+  ];
+
+  const handleEliminar = (id: number) => {
+    console.log(`Eliminando producto con ID: ${id}`);
+  };
+
+  return <Carrito productos={productosEjemplo} onEliminar={handleEliminar} />;
+}
+
+export default App;
+```
+
+**Explicación**:
+- La interfaz `Producto` define la estructura de un objeto producto.
+- `CarritoProps` incluye un array de productos (`productos`) y una función (`onEliminar`).
+- TypeScript garantiza que la función `onEliminar` y los elementos de `productos` cumplan con los tipos definidos.
+
+---
+
+## Props de Componentes como Props (Children)
+
+Los componentes pueden recibir otros componentes o elementos como props a través de `children`.
+
+### Ejemplo 5: Usando Children
+
+```tsx
+interface ContenedorProps {
+  children: React.ReactNode;
+  titulo: string;
+}
+
+function Contenedor({ children, titulo }: ContenedorProps) {
+  return (
+    <div className="contenedor">
+      <h2>{titulo}</h2>
+      {children}
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Contenedor titulo="Mi Contenedor">
+      <p>Este es el contenido dentro del contenedor.</p>
+      <button>Acción</button>
+    </Contenedor>
+  );
+}
+
+export default App;
+```
+
+**Explicación**:
+- La prop `children` usa el tipo `React.ReactNode`, que permite pasar cualquier contenido React válido.
+- El componente `Contenedor` renderiza el título y el contenido pasado como `children`.
