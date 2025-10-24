@@ -4,6 +4,20 @@ position: 1
 date: 2025-10-22
 ---
 
+## Antes de empezar: Fork y clonación del repositorio
+
+- Paso 1: Realiza un fork del repositorio original en GitHub.
+  - Abre `https://github.com/jfinfosena/fdoc_react_act1.git` y pulsa `Fork`.
+  - Tu fork quedará en `https://github.com/<tu-usuario>/fdoc_react_act1.git`.
+
+- Paso 2: Clona tu fork en tu equipo.
+  - En la consola:
+    - `git clone https://github.com/<tu-usuario>/fdoc_react_act1.git`
+
+- Paso 3: Instala dependencias y arranca el proyecto.
+  - `npm install`
+  - `npm run dev`
+
 Objetivo: Crear un proyecto Next.js con JavaScript y definir componentes que cubran todas las formas de props explicadas en el material de clase 3.
 
 ## Pasos simples
