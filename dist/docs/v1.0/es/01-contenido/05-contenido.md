@@ -60,6 +60,31 @@ export default function Home() {
 
 Este archivo `page.js` se asigna automáticamente a la ruta raíz (`/`). Cuando un usuario visita `http://localhost:3000/`, verá el contenido definido en este archivo.
 
+### Otra Ruta Básica: About
+
+Para añadir otra página sencilla, por ejemplo `/about`:
+
+```bash
+app/
+└── about/
+    └── page.js
+```
+
+**Contenido de `app/about/page.js`**:
+
+```javascript
+export default function About() {
+  return (
+    <div>
+      <h1>Acerca de</h1>
+      <p>Esta es la página About.</p>
+    </div>
+  );
+}
+```
+
+- URL para probar: `http://localhost:3000/about`
+
 ### Rutas Anidadas
 
 Para crear rutas anidadas, simplemente crea carpetas dentro de `app` y añade un archivo `page.js` en cada una. Por ejemplo, para crear la ruta `/dashboard/settings`:
@@ -123,6 +148,8 @@ export default function ProductPage() {
 }
 ```
 
+- URL para probar: `http://localhost:3000/products/123`
+
 #### Dinámicas anidadas tipadas
 
 ```bash
@@ -149,6 +176,8 @@ export default function PostPage() {
   );
 }
 ```
+
+- URL para probar: `http://localhost:3000/users/1/posts/42`
 
 #### Catch-All (`[...slug]`) tipado
 
@@ -177,6 +206,8 @@ export default function DocsPage() {
 }
 ```
 
+- URL para probar: `http://localhost:3000/docs/introduccion/instalacion`
+
 #### Pre-render con `generateStaticParams` tipado
 
 ```tsx
@@ -186,6 +217,8 @@ export async function generateStaticParams(): Promise<Array<{ id: string }>> {
   return ids.map((id) => ({ id }));
 }
 ```
+
+- Rutas generadas para probar: `http://localhost:3000/products/1`, `http://localhost:3000/products/2`, `http://localhost:3000/products/3`
 
 Notas:
 - Los archivos en `app/` son Server Components por defecto; usa `'use client'` cuando emplees hooks del cliente como `useParams`, `useRouter` o `useSearchParams`.
@@ -226,6 +259,8 @@ export default function Product() {
 - La carpeta `[id]` indica que el segmento de la URL es dinámico.
 - El parámetro `params` contiene los valores dinámicos (por ejemplo, `{ id: "123" }` para la URL `/products/123`).
 
+- URL para probar: `http://localhost:3000/products/123`
+
 ### Rutas Dinámicas Anidadas
 
 Puedes anidar rutas dinámicas. Por ejemplo, para `/users/[userId]/posts/[postId]`:
@@ -258,6 +293,8 @@ export default function Post() {
 ```
 
 - Para la URL `/users/1/posts/42`, `params` será `{ userId: "1", postId: "42" }`.
+
+- URL para probar: `http://localhost:3000/users/1/posts/42`
 
 ---
 
@@ -296,6 +333,8 @@ export default function BlogPost() {
 - Para la URL `/blog/2023/octubre/mi-post`, `params.slug` será `["2023", "octubre", "mi-post"]`.
 - Útil para manejar estructuras de URL profundas o indeterminadas.
 
+- URL para probar: `http://localhost:3000/blog/2023/octubre/mi-post`
+
 ---
 
 
@@ -319,6 +358,8 @@ export default function Home() {
 ```
 
 - `Link` precarga automáticamente las rutas visibles en la ventana gráfica en modo producción, mejorando el rendimiento.[](https://www.freecodecamp.org/espanol/news/manual-de-next-js/)
+
+- URL para probar: `http://localhost:3000/` (haz clic en “Ir al Dashboard” para navegar a `/dashboard`)
 
 ---
 
