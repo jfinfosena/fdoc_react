@@ -4,7 +4,6 @@ position: 3
 date: 2025-10-28
 ---
 
-# Actividad 3: Enrutamiento en Next.js 13+ (App Router)
 
 ## Objetivo
 Implementar y dominar el sistema de enrutamiento del App Router de Next.js 13+, creando rutas básicas, dinámicas y de captura total, además de manejar la navegación programática.
@@ -28,60 +27,7 @@ Implementar y dominar el sistema de enrutamiento del App Router de Next.js 13+, 
 
 ---
 
-## Ejercicio 1: Configuración Inicial y Rutas Básicas
-
-### Instrucciones:
-1. **Crear un nuevo proyecto Next.js 13+**
-
-   ```bash
-   npx create-next-app@latest mi-tienda-online --typescript --tailwind --eslint --app
-   cd mi-tienda-online
-   ```
-
-2. **Crear la estructura básica de rutas:**
-
-   ```bash
-   app/
-   ├── page.tsx (página de inicio)
-   ├── about/
-   │   └── page.tsx
-   ├── products/
-   │   └── page.tsx
-   └── contact/
-       └── page.tsx
-   ```
-
-3. **Implementar cada página con contenido básico:**
-
-**`app/page.tsx`:**
-```tsx
-export default function Home() {
-  return (
-    <div className="container mx-auto p-8">
-      <h1 className="text-4xl font-bold mb-4">Mi Tienda Online</h1>
-      <p className="text-lg">Bienvenido a nuestra tienda virtual</p>
-    </div>
-  );
-}
-```
-
-**`app/about/page.tsx`:**
-```tsx
-export default function About() {
-  return (
-    <div className="container mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-4">Acerca de Nosotros</h1>
-      <p>Somos una empresa dedicada a...</p>
-    </div>
-  );
-}
-```
-
-4. **Verificar:** Navega a cada ruta manualmente en el navegador.
-
----
-
-## Ejercicio 2: Rutas Dinámicas
+## Ejercicio 1: Rutas Dinámicas
 
 ### Instrucciones:
 1. **Crear rutas dinámicas para productos:**
@@ -154,9 +100,7 @@ export default function CategoryProduct({ params }: CategoryProductProps) {
 
 4. **Probar:** Visita `/products/123` y `/categories/electronics/products/456`
 
----
-
-## Ejercicio 3: Rutas de Captura Total (Catch-All)
+## Ejercicio 2: Rutas de Captura Total (Catch-All)
 
 ### Instrucciones:
 1. **Crear una ruta de documentación con captura total:**
@@ -203,9 +147,7 @@ export default function DocsPage({ params }: DocsPageProps) {
    - `/docs/api/authentication/oauth`
    - `/docs/guides/deployment/vercel`
 
----
-
-## Ejercicio 4: Navegación con Link y Programática
+## Ejercicio 3: Navegación con Link y Programática
 
 ### Parte A: Navegación con Link
 
