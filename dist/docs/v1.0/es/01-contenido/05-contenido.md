@@ -108,16 +108,16 @@ app/
 Código (`app/products/[id]/page.tsx`):
 
 ```tsx
-type ProductPageProps = {
-  params: { id: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-};
+'use client';
+import { useParams } from 'next/navigation';
 
-export default function ProductPage({ params }: ProductPageProps) {
+export default function ProductPage() {
+  const params = useParams();
+  const id = params?.id as string;
   return (
     <div className="container mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-4">Producto #{params.id}</h1>
-      <p className="text-gray-700">ID recibido: {params.id}</p>
+      <h1 className="text-3xl font-bold mb-4">Producto #{id}</h1>
+      <p className="text-gray-700">ID recibido: {id}</p>
     </div>
   );
 }
@@ -135,12 +135,13 @@ app/
 ```
 
 ```tsx
-type PostPageProps = {
-  params: { userId: string; postId: string };
-};
+'use client';
+import { useParams } from 'next/navigation';
 
-export default function PostPage({ params }: PostPageProps) {
-  const { userId, postId } = params;
+export default function PostPage() {
+  const params = useParams();
+  const userId = params?.userId as string;
+  const postId = params?.postId as string;
   return (
     <div className="container mx-auto p-8">
       <h1 className="text-3xl font-bold">Post {postId} del usuario {userId}</h1>
@@ -159,12 +160,14 @@ app/
 ```
 
 ```tsx
-type DocsPageProps = {
-  params: { slug: string[] };
-};
+'use client';
+import { useParams } from 'next/navigation';
 
-export default function DocsPage({ params }: DocsPageProps) {
-  const path = params.slug.join('/');
+export default function DocsPage() {
+  const params = useParams();
+  const slug = params?.slug as string[] | string | undefined;
+  const segments = Array.isArray(slug) ? slug : slug ? [slug] : [];
+  const path = segments.join('/');
   return (
     <div className="container mx-auto p-8">
       <h1 className="text-3xl font-bold mb-4">Documentación</h1>
@@ -185,8 +188,9 @@ export async function generateStaticParams(): Promise<Array<{ id: string }>> {
 ```
 
 Notas:
-- Los archivos en `app/` son Server Components por defecto; usa `'use client'` solo si empleas hooks del cliente.
-- Tipar `params` y `searchParams` evita errores y mejora DX.
+- Los archivos en `app/` son Server Components por defecto; usa `'use client'` cuando emplees hooks del cliente como `useParams`, `useRouter` o `useSearchParams`.
+- En componentes de servidor, accede a `params` a través de las props; en componentes de cliente, usa `useParams()`.
+- `generateStaticParams` es una API del servidor y no puede coexistir con un archivo marcado como `'use client'`. Si necesitas prerenderizado estático, usa el patrón de componente de servidor.
 
 Las rutas dinámicas permiten manejar URLs con parámetros variables, como `/products/[id]`. En el App Router, las rutas dinámicas se crean usando corchetes (`[]`) en los nombres de las carpetas.
 
@@ -204,11 +208,16 @@ app/
 **Contenido de `app/products/[id]/page.js`**:
 
 ```javascript
-export default function Product({ params }) {
+'use client';
+import { useParams } from 'next/navigation';
+
+export default function Product() {
+  const params = useParams();
+  const id = params?.id;
   return (
     <div>
-      <h1>Producto {params.id}</h1>
-      <p>Esta es la página del producto con ID: {params.id}</p>
+      <h1>Producto {id}</h1>
+      <p>Esta es la página del producto con ID: {id}</p>
     </div>
   );
 }
@@ -233,10 +242,16 @@ app/
 **Contenido de `app/users/[userId]/posts/[postId]/page.js`**:
 
 ```javascript
-export default function Post({ params }) {
+'use client';
+import { useParams } from 'next/navigation';
+
+export default function Post() {
+  const params = useParams();
+  const userId = params?.userId;
+  const postId = params?.postId;
   return (
     <div>
-      <h1>Post {params.postId} del usuario {params.userId}</h1>
+      <h1>Post {postId} del usuario {userId}</h1>
     </div>
   );
 }
@@ -262,11 +277,17 @@ app/
 **Contenido de `app/blog/[...slug]/page.js`**:
 
 ```javascript
-export default function BlogPost({ params }) {
+'use client';
+import { useParams } from 'next/navigation';
+
+export default function BlogPost() {
+  const params = useParams();
+  const slug = params?.slug;
+  const segments = Array.isArray(slug) ? slug : slug ? [slug] : [];
   return (
     <div>
       <h1>Blog</h1>
-      <p>Segmentos: {params.slug.join('/')}</p>
+      <p>Segmentos: {segments.join('/')}</p>
     </div>
   );
 }
@@ -303,7 +324,6 @@ export default function Home() {
 
 
 ---
-
 
 
 

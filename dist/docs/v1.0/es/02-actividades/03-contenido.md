@@ -44,19 +44,18 @@ Implementar y dominar el sistema de enrutamiento del App Router de Next.js 13+, 
 
 **`app/products/[id]/page.tsx`:**
 ```tsx
-interface ProductPageProps {
-  params: {
-    id: string;
-  };
-}
+'use client';
+import { useParams } from 'next/navigation';
 
-export default function ProductPage({ params }: ProductPageProps) {
+export default function ProductPage() {
+  const params = useParams();
+  const id = params?.id as string;
   return (
     <div className="container mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-4">Producto #{params.id}</h1>
+      <h1 className="text-3xl font-bold mb-4">Producto #{id}</h1>
       <div className="bg-gray-100 p-6 rounded-lg">
         <h2 className="text-xl font-semibold mb-2">Detalles del Producto</h2>
-        <p><strong>ID:</strong> {params.id}</p>
+        <p><strong>ID:</strong> {id}</p>
         <p><strong>Precio:</strong> $99.99</p>
         <p><strong>Descripción:</strong> Producto de alta calidad</p>
       </div>
@@ -78,21 +77,20 @@ export default function ProductPage({ params }: ProductPageProps) {
 
 **`app/categories/[category]/products/[id]/page.tsx`:**
 ```tsx
-interface CategoryProductProps {
-  params: {
-    category: string;
-    id: string;
-  };
-}
+'use client';
+import { useParams } from 'next/navigation';
 
-export default function CategoryProduct({ params }: CategoryProductProps) {
+export default function CategoryProduct() {
+  const params = useParams();
+  const category = params?.category as string;
+  const id = params?.id as string;
   return (
     <div className="container mx-auto p-8">
       <h1 className="text-3xl font-bold mb-4">
-        Producto {params.id} en {params.category}
+        Producto {id} en {category}
       </h1>
-      <p>Categoría: {params.category}</p>
-      <p>ID del producto: {params.id}</p>
+      <p>Categoría: {category}</p>
+      <p>ID del producto: {id}</p>
     </div>
   );
 }
@@ -116,21 +114,21 @@ export default function CategoryProduct({ params }: CategoryProductProps) {
 
 **`app/docs/[...slug]/page.tsx`:**
 ```tsx
-interface DocsPageProps {
-  params: {
-    slug: string[];
-  };
-}
+'use client';
+import { useParams } from 'next/navigation';
 
-export default function DocsPage({ params }: DocsPageProps) {
-  const path = params.slug.join('/');
+export default function DocsPage() {
+  const params = useParams();
+  const slug = params?.slug as string[] | string | undefined;
+  const segments = Array.isArray(slug) ? slug : slug ? [slug] : [];
+  const path = segments.join('/');
   
   return (
     <div className="container mx-auto p-8">
       <h1 className="text-3xl font-bold mb-4">Documentación</h1>
       <div className="bg-blue-50 p-4 rounded-lg mb-4">
         <p><strong>Ruta actual:</strong> /docs/{path}</p>
-        <p><strong>Segmentos:</strong> {JSON.stringify(params.slug)}</p>
+        <p><strong>Segmentos:</strong> {JSON.stringify(segments)}</p>
       </div>
       <div className="prose">
         <h2>Contenido de la documentación</h2>
