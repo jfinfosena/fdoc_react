@@ -1,8 +1,19 @@
 ---
-title: "Semana 4"
+title: "Evaluación 1"
 position: 4
-date: 2025-12-16
+date: 2025-11-07
 ---
 
-# Semana 4
+## Enlace de la evaluación 1
 
+```bash
+https://seia-stalone.vercel.app/
+```
+
+Códiogo de la evaluación:
+02RRCIRR
+
+## Api Key Gemini:
+```bash
+https://aistudio.google.com/
+```
