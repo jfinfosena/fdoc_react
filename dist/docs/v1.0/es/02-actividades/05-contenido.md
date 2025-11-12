@@ -25,30 +25,34 @@ date: 2025-11-12
 
 ---
 
-### Indicaciones: `components/ProductCard.jsx`
+### Indicaciones: `components/EventCard.jsx`
 
-- Crea un componente `ProductCard` como declaración de función.
-- Recibe una prop `product` con propiedades `title`, `category` y `price`.
-- Agrega estilo utilizando Tailwind CSS.
-.
+- Crea un componente `EventCard` como declaración de función.
+- Recibe una prop `event` con propiedades `title`, `date`, `location` y `price`.
+- Agrega estilo utilizando Tailwind CSS (estructura visual tipo tarjeta).
 
-### Indicaciones: `components/ProductList.jsx`
+Pistas
+- Muestra el título del evento y debajo la ubicación.
+- Formatea la fecha a un formato legible para el usuario.
+- Presenta el precio resaltado visualmente.
 
-- Importa el componente `ProductCard` desde el archivo correspondiente.
-- Declara un arreglo `products` de objetos con propiedades `id`, `title`, `price` y `category`.
-- Implementa el componente `ProductList` como función que:
+### Indicaciones: `components/EventList.jsx`
+
+- Importa el componente `EventCard` desde el archivo correspondiente.
+- Declara un arreglo `events` de objetos con propiedades `id`, `title`, `date`, `location` y `price`.
+- Implementa el componente `EventList` como función que:
   - Agrega estilo utilizando Tailwind CSS.
-  - Itera sobre `products` usando `.map()` para crear una tarjeta por cada elemento.
-  - Pasa el objeto actual como prop `product` a `ProductCard`.
+  - Itera sobre `events` usando `.map()` para crear una tarjeta por cada elemento.
+  - Pasa el objeto actual como prop `event` a `EventCard`.
   - Asigna la prop `key` utilizando el `id` de cada objeto.
 - Exporta el componente como valor por defecto.
 
 Validación
-- Al montar `ProductList` en una página, verifica que se renderice una tarjeta por cada elemento del arreglo.
+- Al montar `EventList` en una página, verifica que se renderice una tarjeta por cada elemento del arreglo.
 - Cambia los valores del arreglo para confirmar que la UI se actualiza correctamente.
 
 ### Consigna
 
 - Inserta ambos archivos en tu proyecto y muéstralos en una página.
-- Puedes modificar el arreglo `products` para probar diferentes datos.
+ - Puedes modificar el arreglo `events` para probar diferentes datos.
 
