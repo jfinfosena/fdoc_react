@@ -1,6 +1,6 @@
 ---
 title: "Semana 8"
-position: 6
+position: 8
 date: 2025-12-02
 ---
 
