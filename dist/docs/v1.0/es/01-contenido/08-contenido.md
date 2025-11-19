@@ -1,5 +1,5 @@
 ---
-title: ""Clase 8 - Hook useEffect - Guía Simple y Detallada"
+title: "Clase 8 - Hook useEffect - Guía Simple y Detallada"
 position: 8
 date: 2025-11-18
 ---
