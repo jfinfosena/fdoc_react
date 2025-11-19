@@ -1,5 +1,5 @@
 ---
-title: "Configurar Next.js con Clerk para autenticación "
+title: "Clase 9 - Configurar Next.js con Clerk para autenticación "
 position: 9
 date: 2025-11-19
 ---
