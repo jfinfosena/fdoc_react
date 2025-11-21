@@ -1,5 +1,5 @@
 ---
-title: "Semana 6"
+title: "Encuestas de percepción /Autoevaluación de Programa"
 position: 6
 date: 2025-11-21
 ---
