@@ -17,3 +17,6 @@ Códiogo de la evaluación:
 ```bash
 https://aistudio.google.com/
 ```
+
+
+[Encuestas de percepción /Autoevaluación de Programa](https://forms.office.com/Pages/ResponsePage.aspx?id=gcPCyy4vk02R0VBskxas54cMYSSVrd9FhPJyfVtEUd9UQkk4NTRGRUZZMVk1RVJVQ0E5NUNNR0dPQSQlQCN0PWcu)
